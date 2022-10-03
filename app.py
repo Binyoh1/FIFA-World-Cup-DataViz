@@ -105,13 +105,32 @@ df_summary["Champion"] = champions_list
 df_summary["Runner-Up"] = runner_ups_list
 df_summary["Third Place"] = third_place_list
 df_summary["Matches Played"] = num_matches_list
-df_summary["Avg Goals per Game"] = (
-    df_summary["Total Goals Scored"] / df_summary["Matches Played"]
+df_summary["Avg Goals per Game"] = round(
+    (df_summary["Total Goals Scored"] / df_summary["Matches Played"]), 2
 )
 
+# Average Number of Goals per Number of World Cup Participants Dataframe__
+avg_goals_per_num_teams_dict = dict(
+    [
+        (
+            x,
+            round(
+                df_summary.loc[
+                    df_summary["Number of Teams"] == x, "Total Goals Scored"
+                ].mean(),
+                2,
+            ),
+        )
+        for x in df_summary.loc[:, "Number of Teams"]
+    ]
+)
+df_agnt = pd.DataFrame.from_dict(avg_goals_per_num_teams_dict.items())
+df_agnt.columns = ["Number of Teams", "Average Number of Goals"]
+df_agnt.sort_values("Number of Teams", ascending=False, inplace=True)
+
 ## Creating Plots/Charts--------------------------------------------------
-# Plot of Total Goals Scored per World Cup_______________________________
-df_summary_2 = df_summary.copy()
+# Plot of Total Goals Scored per World Cup________________________________
+df_summary_2 = df_summary.copy().sort_values("Number of Teams", ascending=False)
 df_summary_2["Number of Teams"] = df_summary_2["Number of Teams"].astype(str)
 fig_tg = px.bar(
     df_summary_2,
@@ -120,7 +139,7 @@ fig_tg = px.bar(
     color="Number of Teams",
     title="Total Goals Scored in each World Cup (1930-2018)",
 )
-fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
+fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-60)
 
 # Plot of Average Goals Scored per World Cup Game_______________________
 df_summary_2["Year"] = df_summary_2["Year"].astype(str)
@@ -128,10 +147,22 @@ fig_ag = px.bar(
     df_summary_2,
     x="Year",
     y="Avg Goals per Game",
-    color="Year",
+    color="Avg Goals per Game",
     title="Average Number of Goals Scored per Game in each World Cup",
 )
 fig_ag.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
+
+# Plot of Average Number of Goals per Number of Wordl Cup Participants___
+df_agnt["Number of Teams"] = df_agnt["Number of Teams"].astype(str)
+fig_agnt = px.bar(
+    df_agnt,
+    x="Number of Teams",
+    y="Average Number of Goals",
+    color="Number of Teams",
+    text="Average Number of Goals",
+    title="Average Number of Goals Scored per Number of Participating Teams",
+)
+fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
 ## App Layout------------------------------------------------------------
 # Page Header
@@ -150,6 +181,8 @@ df_summary
 st.plotly_chart(fig_tg)
 # Plot of Average Goals Scored per World Cup___________________________
 st.plotly_chart(fig_ag)
+# Plot of Average Number of Goals per Number of Wordl Cup Participants_
+st.plotly_chart(fig_agnt)
 
 # Footer
 md("""Dataset Source: [Kaggle](http://www.kaggle.com)""")
