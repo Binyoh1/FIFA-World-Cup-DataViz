@@ -197,4 +197,6 @@ with tab4:
     df_summary
 
 # Footer
-md("""Dataset Source: [Kaggle](http://www.kaggle.com)""")
+md(
+    """Dataset Source: [Kaggle](https://www.kaggle.com/datasets/iamsouravbanerjee/fifa-football-world-cup-dataset)"""
+)
