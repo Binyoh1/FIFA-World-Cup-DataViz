@@ -10,5 +10,5 @@ This project aims to gain the following insights:
   - For any observable deviations, what were some interesting stories surrounding those particular World Cup editions.
 
 
-### TODO
+### Current Task
 - Build a web app visualizing interesting insights in plot and table format
