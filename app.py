@@ -256,7 +256,10 @@ fig_2002 = px.bar(
 fig_2002.update_xaxes(tickangle=-85)
 fig_2002.update_yaxes(dtick=4)
 
+## Team Performance per World Cup--------------------------------------
+# Header
 st.header("Team Performance in each World Cup")
+
 
 # Footer
 md(
