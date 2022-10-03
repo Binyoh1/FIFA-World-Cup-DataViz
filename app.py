@@ -259,6 +259,8 @@ fig_2002.update_yaxes(dtick=4)
 ## Team Performance per World Cup--------------------------------------
 # Header
 st.header("Team Performance in each World Cup")
+# Section Layout
+option = st.selectbox("Choose the World Cup Edition(s) you wish to view", (year_list))
 
 
 # Footer
