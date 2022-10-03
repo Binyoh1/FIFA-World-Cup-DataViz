@@ -13,4 +13,8 @@ This project aims to gain the following insights:
 
 
 ### Current Task
-- Build a web app visualizing interesting insights in plot and table format
+- Building a web app visualizing interesting insights in plot and table format
+
+I originally started creating the app layout using Plotly Dash, but came to the realization that creating the HTML & CSS properties would be very cumbersome (though I have some proficiency with both languages), also, the code would get extremely untidy (and that is before I start adding the data processing/wrangling).
+
+As such, I went with the more beginner friendly route of using Streanlit to build the web app. As soon as the app is deployed, the linked would be made available.

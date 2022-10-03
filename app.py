@@ -172,13 +172,12 @@ md("<h1 style='text-align: center;'>The FIFA World Cup</h1>", unsafe_allow_html=
 # Summary Table_________________________________________________________
 # Header
 st.header("FIFA World Cup Tournament Summary")
-# WC 2018 Team performance_____________________________________________
 
 ## World Cup Summary Plots_____________________________________________
 tab1, tab2, tab3, tab4 = st.tabs(
     [
         "📈 Total Goals Scored per World Cup",
-        "📈 Average Goals Scored per Game per World Cup",
+        "📈 Average Goals Scored per Game in each World Cup",
         "📈 Average Goals Scored per Number of World Cup Participants",
         "🗃 Data",
     ]
@@ -195,6 +194,69 @@ with tab3:
 # Dataframe Table______________________________________________________
 with tab4:
     df_summary
+
+## World Cup Team Perfomances-----------------------------------------
+# WC 2018 Team performance_____________________________________________
+fig_2018 = px.bar(
+    df_2018,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 2018 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_2018.update_xaxes(tickangle=-85)
+fig_2018.update_yaxes(dtick=4)
+
+# WC 2014 Team performance_____________________________________________
+fig_2014 = px.bar(
+    df_2014,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 2014 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_2014.update_xaxes(tickangle=-85)
+fig_2014.update_yaxes(dtick=4)
+
+# WC 2010 Team performance_____________________________________________
+fig_2010 = px.bar(
+    df_2010,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 2010 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_2010.update_xaxes(tickangle=-85)
+fig_2010.update_yaxes(dtick=4)
+
+# WC 2006 Team performance_____________________________________________
+fig_2006 = px.bar(
+    df_2006,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 2006 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_2006.update_xaxes(tickangle=-85)
+fig_2006.update_yaxes(dtick=4)
+
+# WC 2002 Team performance_____________________________________________
+fig_2002 = px.bar(
+    df_2002,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 2002 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_2002.update_xaxes(tickangle=-85)
+fig_2002.update_yaxes(dtick=4)
+
+st.header("Team Performance in each World Cup")
 
 # Footer
 md(
