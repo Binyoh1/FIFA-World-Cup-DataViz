@@ -118,8 +118,20 @@ fig_tg = px.bar(
     x="Year",
     y="Total Goals Scored",
     color="Number of Teams",
+    title="Total Goals Scored in each World Cup (1930-2018)",
 )
 fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
+
+# Plot of Average Goals Scored per World Cup Game_______________________
+df_summary_2["Year"] = df_summary_2["Year"].astype(str)
+fig_ag = px.bar(
+    df_summary_2,
+    x="Year",
+    y="Avg Goals per Game",
+    color="Year",
+    title="Average Number of Goals Scored per Game in each World Cup",
+)
+fig_ag.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
 
 ## App Layout------------------------------------------------------------
 # Page Header
@@ -132,11 +144,12 @@ st.header("FIFA World Cup Tournament Summary")
 df_summary
 
 # WC 2018 Team performance_____________________________________________
-# Header
-st.header("Total Goals Scored in each World Cup (1930-2018)")
-# st.multiselect(options=wc_year_list, label="Choose the Tournament Edition(s)")
-st.plotly_chart(fig_tg)
 
+## World Cup Summary Plots_____________________________________________
+# Plot of Total Goals Scored per World Cup_____________________________
+st.plotly_chart(fig_tg)
+# Plot of Average Goals Scored per World Cup___________________________
+st.plotly_chart(fig_ag)
 
 # Footer
 md("""Dataset Source: [Kaggle](http://www.kaggle.com)""")
