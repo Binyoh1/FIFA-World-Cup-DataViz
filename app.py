@@ -178,15 +178,15 @@ st.header("FIFA World Cup Tournament Summary")
 tab1, tab2, tab3, tab4 = st.tabs(
     [
         "📈 Total Goals Scored per World Cup",
-        "📈 Average Goals Scored per World Cup",
-        "📈 Average Number of Goals per Number of World Cup Participants",
+        "📈 Average Goals Scored per Game per World Cup",
+        "📈 Average Goals Scored per Number of World Cup Participants",
         "🗃 Data",
     ]
 )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab1:
     st.plotly_chart(fig_tg)
-# Plot of Average Goals Scored per World Cup___________________________
+# Plot of Average Goals Scored per Game in each World Cup______________
 with tab2:
     st.plotly_chart(fig_ag)
 # Plot of Average Number of Goals per Number of World Cup Participants_
