@@ -1,6 +1,7 @@
 ## Imports----------------------------------------------------------------
 import pandas as pd
 import numpy as np
+import plotly.express as px
 import streamlit as st
 from streamlit import markdown as md
 
@@ -108,8 +109,17 @@ df_summary["Avg Goals per Game"] = (
     df_summary["Total Goals Scored"] / df_summary["Matches Played"]
 )
 
-# Creating Plots/Charts__________________________________________________
-
+## Creating Plots/Charts--------------------------------------------------
+# Plot of Total Goals Scored per World Cup_______________________________
+df_summary_2 = df_summary.copy()
+df_summary_2["Number of Teams"] = df_summary_2["Number of Teams"].astype(str)
+fig_tg = px.bar(
+    df_summary_2,
+    x="Year",
+    y="Total Goals Scored",
+    color="Number of Teams",
+)
+fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
 
 ## App Layout------------------------------------------------------------
 # Page Header
@@ -123,8 +133,9 @@ df_summary
 
 # WC 2018 Team performance_____________________________________________
 # Header
+st.header("Total Goals Scored in each World Cup (1930-2018)")
 # st.multiselect(options=wc_year_list, label="Choose the Tournament Edition(s)")
-# st.plotly_chart()
+st.plotly_chart(fig_tg)
 
 
 # Footer
