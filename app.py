@@ -161,28 +161,40 @@ fig_agnt = px.bar(
     color="Number of Teams",
     text="Average Number of Goals",
     title="Average Number of Goals Scored per Number of Participating Teams",
+    width=800,
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
 ## App Layout------------------------------------------------------------
 # Page Header
-md("# The FIFA World Cup")
+md("<h1 style='text-align: center;'>The FIFA World Cup</h1>", unsafe_allow_html=True)
 
 # Summary Table_________________________________________________________
 # Header
 st.header("FIFA World Cup Tournament Summary")
-# Dataframe Table
-df_summary
-
 # WC 2018 Team performance_____________________________________________
 
 ## World Cup Summary Plots_____________________________________________
+tab1, tab2, tab3, tab4 = st.tabs(
+    [
+        "📈 Total Goals Scored per World Cup",
+        "📈 Average Goals Scored per World Cup",
+        "📈 Average Number of Goals per Number of World Cup Participants",
+        "🗃 Data",
+    ]
+)
 # Plot of Total Goals Scored per World Cup_____________________________
-st.plotly_chart(fig_tg)
+with tab1:
+    st.plotly_chart(fig_tg)
 # Plot of Average Goals Scored per World Cup___________________________
-st.plotly_chart(fig_ag)
-# Plot of Average Number of Goals per Number of Wordl Cup Participants_
-st.plotly_chart(fig_agnt)
+with tab2:
+    st.plotly_chart(fig_ag)
+# Plot of Average Number of Goals per Number of World Cup Participants_
+with tab3:
+    st.plotly_chart(fig_agnt)
+# Dataframe Table______________________________________________________
+with tab4:
+    df_summary
 
 # Footer
 md("""Dataset Source: [Kaggle](http://www.kaggle.com)""")

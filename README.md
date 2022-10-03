@@ -1,6 +1,8 @@
 # FIFA World Cup Data Visualization and Observations (1930-2018)
 This project aims to gain insights and visualize FIFA World Cup data since its inauguration in 1930 till the 2018 edition. Link to the notebook: [FIFA Data Viz Jupyter Notebook](notebook/fifa-world-cup-1930-2018.ipynb)
 
+You can download the datset [here](https://www.kaggle.com/datasets/iamsouravbanerjee/fifa-football-world-cup-dataset)
+
 This project aims to gain the following insights:
 - Build a dataset with World Cup host, winner and top scoring team for each edition of the World Cup (1930-2018)
 - What is the probability of the top scoring team winning the World Cup.- What is the probability of the host nation's team winning the World Cup.
