@@ -138,7 +138,7 @@ fig_tg = px.bar(
     y="Total Goals Scored",
     color="Number of Teams",
     title="Total Goals Scored in each World Cup (1930-2018)",
-    height=550,
+    height=600,
 )
 fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-60)
 
@@ -186,7 +186,7 @@ tab1, tab2, tab3, tab4 = st.tabs(
 )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab1:
-    st.plotly_chart(fig_tg)
+    st.plotly_chart(fig_tg, use_container_width=True)
 # Plot of Average Goals Scored per Game in each World Cup______________
 with tab2:
     st.plotly_chart(fig_ag)
@@ -475,7 +475,7 @@ fig_list = [
 
 # Update Layout of all Plotly Figures
 for fig in fig_list:
-    fig.update_layout(height=650)
+    fig.update_layout(height=600)
     fig.update_xaxes(tickangle=-85)
     fig.update_yaxes(dtick=2)
 
