@@ -138,6 +138,7 @@ fig_tg = px.bar(
     y="Total Goals Scored",
     color="Number of Teams",
     title="Total Goals Scored in each World Cup (1930-2018)",
+    height=550,
 )
 fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-60)
 
@@ -149,10 +150,11 @@ fig_ag = px.bar(
     y="Avg Goals per Game",
     color="Avg Goals per Game",
     title="Average Number of Goals Scored per Game in each World Cup",
+    height=500,
 )
 fig_ag.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
 
-# Plot of Average Number of Goals per Number of Wordl Cup Participants___
+# Plot of Average Number of Goals per Number of World Cup Participants___
 df_agnt["Number of Teams"] = df_agnt["Number of Teams"].astype(str)
 fig_agnt = px.bar(
     df_agnt,
@@ -161,7 +163,7 @@ fig_agnt = px.bar(
     color="Number of Teams",
     text="Average Number of Goals",
     title="Average Number of Goals Scored per Number of Participating Teams",
-    width=800,
+    height=550,
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
