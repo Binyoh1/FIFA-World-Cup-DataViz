@@ -188,8 +188,8 @@ tab1, tab2, tab3, tab4 = st.tabs(
 )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab1:
-    col1, col2 = st.columns([8, 2])
-    with col1:
+    col1, col2, col3 = st.columns([1, 9, 2])
+    with col2:
         st.plotly_chart(fig_tg, use_container_width=True)
 # Plot of Average Goals Scored per Game in each World Cup______________
 with tab2:
@@ -199,11 +199,15 @@ with tab2:
     with col2:
         md(
             """- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
-    - Hence why it has the highest average goals scored per game (**5.38**) in World Cup history"""
+    - Hence the highest average goals scored per game (**5.38**) in World Cup history.
+
+- The earliest World Cup Editions (**1930-1958**) in general also had higher average goals per game (**over 3.5**), while subsequent editions had lower numbers (**under 3.0**)"""
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
 with tab3:
-    st.plotly_chart(fig_agnt)
+    col1, col2, col3 = st.columns([1, 8, 3])
+    with col2:
+        st.plotly_chart(fig_agnt, use_container_width=True)
 # Dataframe Table______________________________________________________
 with tab4:
     df_summary
