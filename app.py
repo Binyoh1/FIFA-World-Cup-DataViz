@@ -174,7 +174,9 @@ fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
 ## App Layout------------------------------------------------------------
 # Page Header
-md("<h1 style='text-align: center;'>The FIFA World Cup</h1>", unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 1, 1])
+with col2:
+    st.title("The FIFA World Cup")
 
 # Summary Table_________________________________________________________
 # Header
