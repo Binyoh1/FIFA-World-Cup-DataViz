@@ -5,6 +5,9 @@ import plotly.express as px
 import streamlit as st
 from streamlit import markdown as md
 
+# Defaulting Streamlit App to Wide Mode---------------------------------
+st.set_page_config(layout="wide")
+
 ## Pandas Data Wrangling-------------------------------------------------
 # Reading CSV Files into Pandas Dataframes_______________________________
 df_ogs = pd.read_csv(
