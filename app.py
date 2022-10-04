@@ -5,7 +5,7 @@ import plotly.express as px
 import streamlit as st
 from streamlit import markdown as md
 
-# Defaulting Streamlit App to Wide Mode---------------------------------
+## Defaulting Streamlit App to Wide Mode---------------------------------
 st.set_page_config(layout="wide")
 
 ## Pandas Data Wrangling-------------------------------------------------
@@ -203,10 +203,11 @@ with tab2:
         st.plotly_chart(fig_ag, use_container_width=True)
     with col2:
         md(
-            """- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
-    - Hence the highest average goals scored per game (**5.38**) in World Cup history.
+            """
+- The earliest World Cup Editions (**1930-1958**) in general had higher average goals per game (**over 3.5**), while subsequent editions had comparably lower numbers (**under 3.0**).
 
-- The earliest World Cup Editions (**1930-1958**) in general also had higher average goals per game (**over 3.5**), while subsequent editions had lower numbers (**under 3.0**)"""
+- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
+    - Hence the highest average goals scored per game (**5.38**) in World Cup history."""
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
 with tab3:
@@ -507,15 +508,15 @@ selected_year = st.selectbox(
     "Choose the World Cup Edition(s) you wish to view", (year_list)
 )
 
-if int(selected_year) in year_list:
+try:
     col1, col2, col3 = st.columns([1, 14, 1])
     with col2:
         st.plotly_chart(
             fig_list[year_list.index(selected_year)], use_container_width=True
         )
-else:
-    IndexError(
-        "This information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
+except IndexError:
+    st.error(
+        "This plot/information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
     )
 
 # Footer
