@@ -256,12 +256,285 @@ fig_2002 = px.bar(
 fig_2002.update_xaxes(tickangle=-85)
 fig_2002.update_yaxes(dtick=4)
 
+# WC 1998 Team performance_____________________________________________
+fig_1998 = px.bar(
+    df_1998,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1998 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1998.update_xaxes(tickangle=-85)
+fig_1998.update_yaxes(dtick=4)
+
+# WC 1994 Team performance_____________________________________________
+fig_1994 = px.bar(
+    df_1994,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1994 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1994.update_xaxes(tickangle=-85)
+fig_1994.update_yaxes(dtick=4)
+
+# WC 1990 Team performance_____________________________________________
+fig_1990 = px.bar(
+    df_1990,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1990 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1990.update_xaxes(tickangle=-85)
+fig_1990.update_yaxes(dtick=4)
+
+# WC 1990 Team performance_____________________________________________
+fig_1990 = px.bar(
+    df_1990,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1990 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1990.update_xaxes(tickangle=-85)
+fig_1990.update_yaxes(dtick=4)
+
+# WC 1986 Team performance_____________________________________________
+fig_1986 = px.bar(
+    df_1986,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1986 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1986.update_xaxes(tickangle=-85)
+fig_1986.update_yaxes(dtick=4)
+
+# WC 1982 Team performance_____________________________________________
+fig_1982 = px.bar(
+    df_1982,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1982 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1982.update_xaxes(tickangle=-85)
+fig_1982.update_yaxes(dtick=4)
+
+# WC 1982 Team performance_____________________________________________
+fig_1982 = px.bar(
+    df_1982,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1982 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1982.update_xaxes(tickangle=-85)
+fig_1982.update_yaxes(dtick=4)
+
+# WC 1982 Team performance_____________________________________________
+fig_1982 = px.bar(
+    df_1982,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1982 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1982.update_xaxes(tickangle=-85)
+fig_1982.update_yaxes(dtick=4)
+
+# WC 1978 Team performance_____________________________________________
+fig_1978 = px.bar(
+    df_1978,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1978 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1978.update_xaxes(tickangle=-85)
+fig_1978.update_yaxes(dtick=4)
+
+# WC 1974 Team performance_____________________________________________
+fig_1974 = px.bar(
+    df_1974,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1974 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1974.update_xaxes(tickangle=-85)
+fig_1974.update_yaxes(dtick=4)
+
+# WC 1970 Team performance_____________________________________________
+fig_1970 = px.bar(
+    df_1970,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1970 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1970.update_xaxes(tickangle=-85)
+fig_1970.update_yaxes(dtick=4)
+
+# WC 1966 Team performance_____________________________________________
+fig_1966 = px.bar(
+    df_1966,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1966 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1966.update_xaxes(tickangle=-85)
+fig_1966.update_yaxes(dtick=4)
+
+# WC 1962 Team performance_____________________________________________
+fig_1962 = px.bar(
+    df_1962,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1962 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1962.update_xaxes(tickangle=-85)
+fig_1962.update_yaxes(dtick=4)
+
+# WC 1958 Team performance_____________________________________________
+fig_1958 = px.bar(
+    df_1958,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1958 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1958.update_xaxes(tickangle=-85)
+fig_1958.update_yaxes(dtick=4)
+
+# WC 1958 Team performance_____________________________________________
+fig_1958 = px.bar(
+    df_1958,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1958 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1958.update_xaxes(tickangle=-85)
+fig_1958.update_yaxes(dtick=4)
+
+# WC 1954 Team performance_____________________________________________
+fig_1954 = px.bar(
+    df_1954,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1954 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1954.update_xaxes(tickangle=-85)
+fig_1954.update_yaxes(dtick=4)
+
+# WC 1950 Team performance_____________________________________________
+fig_1950 = px.bar(
+    df_1950,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1950 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1950.update_xaxes(tickangle=-85)
+fig_1950.update_yaxes(dtick=4)
+
+# WC 1938 Team performance_____________________________________________
+fig_1938 = px.bar(
+    df_1938,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1938 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1938.update_xaxes(tickangle=-85)
+fig_1938.update_yaxes(dtick=4)
+
+# WC 1934 Team performance_____________________________________________
+fig_1934 = px.bar(
+    df_1934,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1934 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1934.update_xaxes(tickangle=-85)
+fig_1934.update_yaxes(dtick=4)
+
+# WC 1930 Team performance_____________________________________________
+fig_1930 = px.bar(
+    df_1930,
+    x="Team",
+    y=["Goals For", "Goals Against"],
+    title="Goals Scored & Conceded per Nation - 1930 World Cup",
+    barmode="group",
+    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+)
+fig_1930.update_xaxes(tickangle=-85)
+fig_1930.update_yaxes(dtick=4)
+
+# List of Plots________________________________________________________
+fig_list = [
+    fig_2018,
+    fig_2014,
+    fig_2010,
+    fig_2006,
+    fig_2002,
+    fig_1998,
+    fig_1994,
+    fig_1990,
+    fig_1986,
+    fig_1982,
+    fig_1978,
+    fig_1974,
+    fig_1970,
+    fig_1966,
+    fig_1962,
+    fig_1958,
+    fig_1954,
+    fig_1950,
+    fig_1938,
+    fig_1934,
+    fig_1930,
+]
+
 ## Team Performance per World Cup--------------------------------------
 # Header
 st.header("Team Performance in each World Cup")
 # Section Layout
-option = st.selectbox("Choose the World Cup Edition(s) you wish to view", (year_list))
+selected_year = st.selectbox(
+    "Choose the World Cup Edition(s) you wish to view", (year_list)
+)
 
+if int(selected_year) in year_list:
+    st.plotly_chart(fig_list[year_list.index(selected_year)], use_container_width=True)
+else:
+    IndexError(
+        "This information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
+    )
 
 # Footer
 md(
