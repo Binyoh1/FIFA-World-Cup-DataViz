@@ -138,6 +138,7 @@ fig_tg = px.bar(
     y="Total Goals Scored",
     color="Number of Teams",
     title="Total Goals Scored in each World Cup (1930-2018)",
+    hover_data=["Matches Played"],
     height=600,
 )
 fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickangle=-60)
@@ -150,7 +151,8 @@ fig_ag = px.bar(
     y="Avg Goals per Game",
     color="Avg Goals per Game",
     title="Average Number of Goals Scored per Game in each World Cup",
-    height=500,
+    hover_data=["Number of Teams", "Total Goals Scored", "Matches Played"],
+    height=550,
 )
 fig_ag.update_xaxes(type="category", categoryorder="category ascending", tickangle=-90)
 
@@ -186,10 +188,19 @@ tab1, tab2, tab3, tab4 = st.tabs(
 )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab1:
-    st.plotly_chart(fig_tg, use_container_width=True)
+    col1, col2 = st.columns([8, 2])
+    with col1:
+        st.plotly_chart(fig_tg, use_container_width=True)
 # Plot of Average Goals Scored per Game in each World Cup______________
 with tab2:
-    st.plotly_chart(fig_ag)
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        st.plotly_chart(fig_ag, use_container_width=True)
+    with col2:
+        md(
+            """- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
+    - Hence why it has the highest average goals scored per game (**5.38**) in World Cup history"""
+        )
 # Plot of Average Number of Goals per Number of World Cup Participants_
 with tab3:
     st.plotly_chart(fig_agnt)
@@ -475,7 +486,7 @@ fig_list = [
 
 # Update Layout of all Plotly Figures
 for fig in fig_list:
-    fig.update_layout(height=600)
+    fig.update_layout(height=650)
     fig.update_xaxes(tickangle=-85)
     fig.update_yaxes(dtick=2)
 
@@ -488,7 +499,11 @@ selected_year = st.selectbox(
 )
 
 if int(selected_year) in year_list:
-    st.plotly_chart(fig_list[year_list.index(selected_year)], use_container_width=True)
+    col1, col2, col3 = st.columns([1, 14, 1])
+    with col2:
+        st.plotly_chart(
+            fig_list[year_list.index(selected_year)], use_container_width=True
+        )
 else:
     IndexError(
         "This information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
