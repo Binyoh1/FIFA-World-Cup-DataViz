@@ -509,11 +509,15 @@ selected_year = st.selectbox(
 )
 
 try:
-    col1, col2, col3 = st.columns([1, 14, 1])
-    with col2:
-        st.plotly_chart(
-            fig_list[year_list.index(selected_year)], use_container_width=True
-        )
+    tab1, tab2 = st.tabs(["📈 Team Performace Chart", "🗃 Team Performance Data"])
+    with tab1:
+        col1, col2, col3 = st.columns([1, 14, 1])
+        with col2:
+            st.plotly_chart(
+                fig_list[year_list.index(selected_year)], use_container_width=True
+            )
+    with tab2:
+        data_list[year_list.index(selected_year)]
 except IndexError:
     st.error(
         "This plot/information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
