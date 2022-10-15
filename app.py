@@ -95,7 +95,7 @@ runner_ups_list.reverse()
 third_place_list = list(df_ogs["THIRD PLACE"])
 third_place_list.reverse()
 
-# Goals and Participating Teams Dataframe________________________________
+# Creating a new FIFA World Cup Summary Dataframe_______________________
 df_teams = pd.DataFrame(list(teams_dict.items()), columns=["Year", "Number of Teams"])
 df_goals = pd.DataFrame(
     list(goals_dict.items()), columns=["Year", "Total Goals Scored"]
@@ -111,6 +111,9 @@ df_summary["Matches Played"] = num_matches_list
 df_summary["Avg Goals per Game"] = round(
     (df_summary["Total Goals Scored"] / df_summary["Matches Played"]), 2
 )
+df_summary_i = df_summary.set_index("Year")
+df_summary_i.columns.name = df_summary_i.index.name
+df_summary_i.index.name = None
 
 # Average Number of Goals per Number of World Cup Participants Dataframe__
 avg_goals_per_num_teams_dict = dict(
@@ -216,7 +219,7 @@ with tab3:
         st.plotly_chart(fig_agnt, use_container_width=True)
 # Dataframe Table______________________________________________________
 with tab4:
-    df_summary
+    st.write(df_summary_i.to_html(), unsafe_allow_html=True)
 
 ## World Cup Team Perfomances-----------------------------------------
 # WC 2018 Team performance_____________________________________________

@@ -1,22 +1,22 @@
-,Year,Number of Teams,Total Goals Scored
-5,1998,32,171
-1,2014,32,171
-0,2018,32,169
-4,2002,32,161
-3,2006,32,147
-9,1982,24,146
-2,2010,32,145
-6,1994,24,141
-16,1954,16,140
-8,1986,24,132
-15,1958,16,126
-7,1990,24,115
-10,1978,16,102
-11,1974,16,97
-12,1970,16,95
-13,1966,16,89
-14,1962,16,89
-17,1950,13,88
-18,1938,15,84
-20,1930,13,70
-19,1934,16,69
+,Year,Number of Teams,Total Goals Scored,Host(s),Champion,Runner-Up,Third Place,Matches Played,Avg Goals per Game
+5,1998,32,171,France,France,Brazil,Croatia,64,2.67
+1,2014,32,171,Brazil,Germany,Argentina,Netherlands,64,2.67
+0,2018,32,169,Russia,France,Croatia,Belgium,64,2.64
+4,2002,32,161,"South Korea, Japan",Brazil,Germany,Turkey,64,2.52
+3,2006,32,147,Germany,Italy,France,Germany,64,2.3
+9,1982,24,146,Spain,Italy,West Germany,Poland,52,2.81
+2,2010,32,145,South Africa,Spain,Netherlands,Germany,64,2.27
+6,1994,24,141,United States,Brazil,Italy,Sweden,52,2.71
+16,1954,16,140,Switzerland,West Germany,Hungary,Austria,26,5.38
+8,1986,24,132,Mexico,Argentina,West Germany,France,52,2.54
+15,1958,16,126,Sweden,Brazil,Sweden,France,35,3.6
+7,1990,24,115,Italy,West Germany,Argentina,Italy,52,2.21
+10,1978,16,102,Argentina,Argentina,Netherlands,Brazil,38,2.68
+11,1974,16,97,West Germany,West Germany,Netherlands,Poland,38,2.55
+12,1970,16,95,Mexico,Brazil,Italy,West Germany,32,2.97
+13,1966,16,89,England,England,West Germany,Portugal,32,2.78
+14,1962,16,89,Chile,Brazil,Czechoslovakia,Chile,32,2.78
+17,1950,13,88,Brazil,Uruguay,Brazil,Sweden,22,4.0
+18,1938,15,84,France,Italy,Hungary,Brazil,18,4.67
+20,1930,13,70,Uruguay,Uruguay,Argentina,United States,16,4.38
+19,1934,16,69,Italy,Italy,Czechoslovakia,Germany,17,4.06
