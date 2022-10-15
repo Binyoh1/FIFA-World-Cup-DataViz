@@ -115,6 +115,16 @@ df_summary_i = df_summary.set_index("Year")
 df_summary_i.columns.name = df_summary_i.index.name
 df_summary_i.index.name = None
 
+# All winners in FIFA World Cup history_________________________________
+df_summary_n = df_summary.copy()
+df_summary_n["Champion"] = df_summary_n["Champion"].replace(
+    ["West Germany", "Germany"], "Germany*"
+)
+wc_champions_dict = dict(df_summary_n["Champion"].value_counts())
+df_champions = pd.DataFrame(
+    list(wc_champions_dict.items()), columns=["Team", "Number of Titles"]
+)
+
 # Average Number of Goals per Number of World Cup Participants Dataframe__
 avg_goals_per_num_teams_dict = dict(
     [
@@ -175,22 +185,35 @@ fig_agnt = px.bar(
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
+# Plot of World Cup winners in the history of the competition______________
+# df_champions["Number of Titles"] = df_champions["Number of Titles"].astype(str)
+fig_champions = px.bar(
+    df_champions,
+    x="Team",
+    y="Number of Titles",
+    color="Number of Titles",
+    title="All FIFA World Cup Champions",
+    height=550,
+)
+fig_champions.update_yaxes(tick0="0")
+
 ## App Layout------------------------------------------------------------
 # Page Header
 col1, col2, col3 = st.columns([1, 1, 1])
 with col2:
-    st.title("The FIFA World Cup")
+    st.title("The FIFA World Men's Cup")
 
 # Summary Table_________________________________________________________
 # Header
 st.header("FIFA World Cup Tournament Summary")
 
 ## World Cup Summary Plots_____________________________________________
-tab1, tab2, tab3, tab4 = st.tabs(
+tab1, tab2, tab3, tab4, tab5 = st.tabs(
     [
         "📈 Total Goals Scored per World Cup",
         "📈 Average Goals Scored per Game in each World Cup",
         "📈 Average Goals Scored per Number of World Cup Participants",
+        "📈 World Cup Winners",
         "🗃 Data",
     ]
 )
@@ -217,8 +240,17 @@ with tab3:
     col1, col2, col3 = st.columns([1, 8, 3])
     with col2:
         st.plotly_chart(fig_agnt, use_container_width=True)
-# Dataframe Table______________________________________________________
+# Plot of world cup champions_________________________________________
 with tab4:
+    col1, col2, col3 = st.columns([1, 8, 3])
+    with col2:
+        st.plotly_chart(fig_champions, use_container_width=True)
+    with col3:
+        md(
+            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
+        )
+# Dataframe Table______________________________________________________
+with tab5:
     st.write(df_summary_i.to_html(), unsafe_allow_html=True)
 
 ## World Cup Team Perfomances-----------------------------------------
