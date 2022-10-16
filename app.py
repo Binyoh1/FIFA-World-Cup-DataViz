@@ -1,4 +1,5 @@
 ## Imports----------------------------------------------------------------
+from tkinter import font
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -118,7 +119,7 @@ df_summary_i.index.name = None
 # All winners in FIFA World Cup history_________________________________
 df_summary_n = df_summary.copy()
 df_summary_n["Champion"] = df_summary_n["Champion"].replace(
-    ["West Germany", "Germany"], "Germany*"
+    ["West Germany", "Germany"], "Germany *"
 )
 wc_champions_dict = dict(df_summary_n["Champion"].value_counts())
 df_champions = pd.DataFrame(
@@ -195,7 +196,8 @@ fig_champions = px.bar(
     title="All FIFA World Cup Champions",
     height=550,
 )
-fig_champions.update_yaxes(tick0="0")
+fig_champions.update_xaxes(tickfont_size=14)
+fig_champions.update_yaxes(tickfont_size=16)
 
 ## App Layout------------------------------------------------------------
 # Page Header
@@ -210,10 +212,10 @@ st.header("FIFA World Cup Tournament Summary")
 ## World Cup Summary Plots_____________________________________________
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     [
+        "📈 World Cup Winners",
         "📈 Total Goals Scored per World Cup",
         "📈 Average Goals Scored per Game in each World Cup",
         "📈 Average Goals Scored per Number of World Cup Participants",
-        "📈 World Cup Winners",
         "🗃 Data",
     ]
 )
@@ -245,7 +247,7 @@ with tab3:
     - Hence the highest average goals scored per game (**5.38**) in World Cup history."""
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
-with tab3:
+with tab4:
     col1, col2, col3 = st.columns([1, 8, 3])
     with col2:
         st.plotly_chart(fig_agnt, use_container_width=True)
