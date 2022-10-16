@@ -146,6 +146,20 @@ df_agnt.columns = ["Number of Teams", "Average Number of Goals"]
 df_agnt.sort_values("Number of Teams", ascending=False, inplace=True)
 
 ## Creating Plots/Charts--------------------------------------------------
+# Plot of World Cup winners in the history of the competition______________
+# df_champions["Number of Titles"] = df_champions["Number of Titles"].astype(str)
+fig_champions = px.bar(
+    df_champions,
+    x="Team",
+    y="Number of Titles",
+    color="Number of Titles",
+    color_continuous_scale="Viridis",
+    title="All FIFA World Cup Champions",
+    height=550,
+)
+fig_champions.update_xaxes(tickfont_size=14)
+fig_champions.update_yaxes(tickfont_size=16)
+
 # Plot of Total Goals Scored per World Cup________________________________
 df_summary_2 = df_summary.copy().sort_values("Number of Teams", ascending=False)
 df_summary_2["Number of Teams"] = df_summary_2["Number of Teams"].astype(str)
@@ -185,19 +199,6 @@ fig_agnt = px.bar(
     height=550,
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
-
-# Plot of World Cup winners in the history of the competition______________
-# df_champions["Number of Titles"] = df_champions["Number of Titles"].astype(str)
-fig_champions = px.bar(
-    df_champions,
-    x="Team",
-    y="Number of Titles",
-    color="Number of Titles",
-    title="All FIFA World Cup Champions",
-    height=550,
-)
-fig_champions.update_xaxes(tickfont_size=14)
-fig_champions.update_yaxes(tickfont_size=16)
 
 ## App Layout------------------------------------------------------------
 # Page Header
