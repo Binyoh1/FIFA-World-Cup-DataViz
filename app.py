@@ -202,7 +202,7 @@ fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
 ## App Layout------------------------------------------------------------
 # Page Header
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([11, 15, 10])
 with col2:
     st.title("The FIFA Men's World Cup")
 
