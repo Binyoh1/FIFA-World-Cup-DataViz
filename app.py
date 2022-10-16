@@ -157,8 +157,8 @@ fig_champions = px.bar(
     title="All FIFA World Cup Champions",
     height=550,
 )
-fig_champions.update_xaxes(tickfont_size=14)
-fig_champions.update_yaxes(tickfont_size=16)
+# fig_champions.update_xaxes(tickfont_size=14)
+# fig_champions.update_yaxes(tickfont_size=16)
 
 # Plot of Total Goals Scored per World Cup________________________________
 df_summary_2 = df_summary.copy().sort_values("Number of Teams", ascending=False)
