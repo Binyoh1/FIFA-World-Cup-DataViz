@@ -224,7 +224,7 @@ with tab1:
         st.plotly_chart(fig_champions, use_container_width=True)
     with col3:
         md(
-            "- __/*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
+            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
         )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab2:
