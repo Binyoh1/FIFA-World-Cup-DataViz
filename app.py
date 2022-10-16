@@ -199,9 +199,9 @@ fig_champions.update_yaxes(tick0="0")
 
 ## App Layout------------------------------------------------------------
 # Page Header
-col1, col2, col3 = st.columns([1, 1, 1])
+col1, col2, col3 = st.columns([1, 1.5, 1])
 with col2:
-    st.title("The FIFA World Men's Cup")
+    st.title("The FIFA Men's World Cup")
 
 # Summary Table_________________________________________________________
 # Header
@@ -217,13 +217,22 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
         "🗃 Data",
     ]
 )
-# Plot of Total Goals Scored per World Cup_____________________________
+# Plot of world cup champions_________________________________________
 with tab1:
+    col1, col2, col3 = st.columns([1, 8, 3])
+    with col2:
+        st.plotly_chart(fig_champions, use_container_width=True)
+    with col3:
+        md(
+            "- __/*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
+        )
+# Plot of Total Goals Scored per World Cup_____________________________
+with tab2:
     col1, col2, col3 = st.columns([1, 9, 2])
     with col2:
         st.plotly_chart(fig_tg, use_container_width=True)
 # Plot of Average Goals Scored per Game in each World Cup______________
-with tab2:
+with tab3:
     col1, col2 = st.columns([3, 1])
     with col1:
         st.plotly_chart(fig_ag, use_container_width=True)
@@ -240,15 +249,6 @@ with tab3:
     col1, col2, col3 = st.columns([1, 8, 3])
     with col2:
         st.plotly_chart(fig_agnt, use_container_width=True)
-# Plot of world cup champions_________________________________________
-with tab4:
-    col1, col2, col3 = st.columns([1, 8, 3])
-    with col2:
-        st.plotly_chart(fig_champions, use_container_width=True)
-    with col3:
-        md(
-            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
-        )
 # Dataframe Table______________________________________________________
 with tab5:
     st.write(df_summary_i.to_html(), unsafe_allow_html=True)
