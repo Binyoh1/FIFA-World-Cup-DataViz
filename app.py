@@ -202,7 +202,7 @@ fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
 
 ## App Layout------------------------------------------------------------
 # Page Header
-col1, col2, col3 = st.columns([11, 15, 10])
+col1, col2, col3 = st.columns([1.1, 1.5, 1])
 with col2:
     st.title("The FIFA Men's World Cup")
 
@@ -238,7 +238,7 @@ with tab2:
         md(
             """
            - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions which had 16 participating teams (**1934, 1954-1978**).
-           - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was one embroiled in drama.
+           - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was nonetheless one embroiled in drama.
            """
         )
 # Plot of Average Goals Scored per Game in each World Cup______________
