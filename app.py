@@ -230,7 +230,7 @@ with tab1:
         st.plotly_chart(fig_champions, use_container_width=True)
     with col2:
         st.header("")
-        st.write("")
+        st.write("Champions Table")
         st.write(
             df_champions_i.to_html(),
             unsafe_allow_html=True,
