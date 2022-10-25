@@ -568,7 +568,7 @@ for fig in fig_list:
 st.header("Team Performance in each World Cup")
 # Section Layout
 selected_year = st.selectbox(
-    "Choose the World Cup Edition you wish to view", (year_list)
+    "Choose the World Cup Edition you wish to display", (year_list)
 )
 
 try:
