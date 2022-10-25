@@ -213,7 +213,7 @@ st.header("FIFA World Cup Tournament Summary")
 ## World Cup Summary Plots_____________________________________________
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     [
-        "📈 World Cup Winners",
+        "World Cup Champions",
         "📈 Total Goals Scored per World Cup",
         "📈 Average Goals Scored per Game in each World Cup",
         "📈 Average Goals Scored per Number of World Cup Participants",
@@ -221,11 +221,21 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
     ]
 )
 # Plot of world cup champions_________________________________________
+df_champions_i = df_champions.set_index("Team")
+df_champions_i.columns.name = df_champions_i.index.name
+df_champions_i.index.name = None
 with tab1:
-    col1, col2, col3 = st.columns([1, 8, 3])
-    with col2:
+    col1, col2 = st.columns([8, 3])
+    with col1:
         st.plotly_chart(fig_champions, use_container_width=True)
-    with col3:
+    with col2:
+        st.header("")
+        st.write("")
+        st.write(
+            df_champions_i.to_html(),
+            unsafe_allow_html=True,
+        )
+        st.write("")
         md(
             "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
         )
@@ -253,7 +263,7 @@ with tab3:
 
 - Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
     - Hence the highest average goals scored per game (**5.38**) in World Cup history.
-- The **1990** World Cup has the lowest average goels scored per game (**2.21**) in the tournament's history
+- The **1990** World Cup in contrast, has the lowest average goals scored per game (**2.21**) in the tournament's history
     """
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
