@@ -250,10 +250,10 @@ with tab3:
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
 with tab4:
-    col1, col2, col3 = st.columns([1, 8, 3])
-    with col2:
+    col1, col2 = st.columns([8, 3])
+    with col1:
         st.plotly_chart(fig_agnt, use_container_width=True)
-    with col3:
+    with col2:
         md(
             """
             Generally, the higher the number of participants, the higher the number of goals scored in the World Cup
