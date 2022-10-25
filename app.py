@@ -256,7 +256,7 @@ with tab4:
     with col2:
         md(
             """
-            Generally, the higher the number of participants, the higher the number of goals scored in the World Cup
+            - Generally, the higher the number of participants, the higher the number of goals scored in the World Cup
            """
         )
 # Dataframe Table______________________________________________________
