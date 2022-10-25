@@ -245,13 +245,20 @@ with tab3:
 - The earliest World Cup Editions (**1930-1958**) in general had higher average goals per game (**over 3.5**), while subsequent editions had comparably lower numbers (**under 3.0**).
 
 - Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
-    - Hence the highest average goals scored per game (**5.38**) in World Cup history."""
+    - Hence the highest average goals scored per game (**5.38**) in World Cup history.
+    """
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
 with tab4:
     col1, col2, col3 = st.columns([1, 8, 3])
     with col2:
         st.plotly_chart(fig_agnt, use_container_width=True)
+    with col3:
+        md(
+            """
+            Generally, the higher the number of participants, the higher the number of goals scored in the World Cup
+           """
+        )
 # Dataframe Table______________________________________________________
 with tab5:
     st.write(df_summary_i.to_html(), unsafe_allow_html=True)
