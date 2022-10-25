@@ -237,7 +237,7 @@ with tab1:
         )
         st.write("")
         md(
-            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)"
+            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)."
         )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab2:
@@ -249,7 +249,7 @@ with tab2:
             """
            - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions which had 16 participating teams (**1934, 1954-1978**).
            - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was nonetheless one embroiled in drama.
-           - The **2006** edition and especially the **2010** World Cup had numerous complaints about the behaviour of the matchball used in the tournament, which may partially explain why fewer goals were scored compared to other editions with 32 participants (**1998-present**)
+           - The **2006** edition and especially the **2010** World Cup had numerous complaints about the behaviour of the matchball used in the tournament, which may partially explain why fewer goals were scored compared to other editions with 32 participants (**1998-present**).
            """
         )
 # Plot of Average Goals Scored per Game in each World Cup______________
@@ -264,7 +264,7 @@ with tab3:
 
 - Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
     - Hence the highest average goals scored per game (**5.38**) in World Cup history.
-- The **1990** World Cup in contrast, has the lowest average goals scored per game (**2.21**) in the tournament's history
+- The **1990** World Cup in contrast, has the lowest average goals scored per game (**2.21**) in the tournament's history.
     """
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
