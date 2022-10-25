@@ -231,9 +231,16 @@ with tab1:
         )
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab2:
-    col1, col2, col3 = st.columns([1, 9, 2])
-    with col2:
+    col1, col2 = st.columns([9, 3])
+    with col1:
         st.plotly_chart(fig_tg, use_container_width=True)
+    with col2:
+        md(
+            """
+           - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions which had 16 participating teams (**1934, 1954-1978**).
+           - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was one embroiled in drama.
+           """
+        )
 # Plot of Average Goals Scored per Game in each World Cup______________
 with tab3:
     col1, col2 = st.columns([3, 1])
@@ -246,6 +253,7 @@ with tab3:
 
 - Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
     - Hence the highest average goals scored per game (**5.38**) in World Cup history.
+- The **1990** World Cup has the lowest average goels scored per game (**2.21**) in the tournament's history
     """
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
@@ -256,7 +264,7 @@ with tab4:
     with col2:
         md(
             """
-            - Generally, the higher the number of participants, the higher the number of goals scored in the World Cup
+            - Generally, the higher the number of participants, the higher the number of goals scored in the World Cup. Though that isn't necessarily the case for every edition of the World Cup.
            """
         )
 # Dataframe Table______________________________________________________
