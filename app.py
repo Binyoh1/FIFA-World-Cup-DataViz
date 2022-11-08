@@ -154,7 +154,6 @@ fig_champions = px.bar(
     y="Number of Titles",
     color="Number of Titles",
     color_continuous_scale="Viridis",
-    title="All FIFA World Cup Champions",
     height=550,
 )
 fig_champions.update_xaxes(tickfont_size=14)
@@ -224,21 +223,33 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 df_champions_i = df_champions.set_index("Team")
 df_champions_i.columns.name = df_champions_i.index.name
 df_champions_i.index.name = None
+tab1_text = "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)."
+
 with tab1:
-    col1, col2 = st.columns([8, 3])
-    with col1:
-        st.plotly_chart(fig_champions, use_container_width=True)
+    options = st.selectbox(
+        "Choose how you want the data presented: Chart or Table", ("Table", "Chart")
+    )
+    col1, col2, col3 = st.columns([2, 4, 2])
     with col2:
-        st.header("")
-        md("**Champions Table**")
-        st.write(
-            df_champions_i.to_html(),
-            unsafe_allow_html=True,
-        )
-        st.write("")
-        md(
-            "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)."
-        )
+        md("#### All FIFA World Cup Champions and Number of Titles")
+    if options == "Table":
+        col1, col2, col3 = st.columns([2, 3, 3])
+        with col2:
+            st.write(df_champions_i.to_html(), unsafe_allow_html=True)
+        with col3:
+            md(tab1_text)
+    elif options == "Chart":
+        col1, col2, col3 = st.columns([1, 7, 3])
+        with col2:
+            st.plotly_chart(fig_champions, use_container_width=True)
+        with col3:
+            st.write("")
+            st.write("")
+            st.write("")
+            md(tab1_text)
+    else:
+        st.error("You can only select Chart or Table.")
+
 # Plot of Total Goals Scored per World Cup_____________________________
 with tab2:
     col1, col2 = st.columns([9, 3])
@@ -564,6 +575,12 @@ for fig in fig_list:
     fig.update_xaxes(tickangle=-85)
     fig.update_yaxes(dtick=2)
 
+# Removing index column from dataframes in data_list
+data_list_i = [data.set_index("Position") for data in data_list]
+for data in data_list_i:
+    data.columns.name = data.index.name
+    data.index.name = None
+
 ## Team Performance per World Cup--------------------------------------
 # Header
 st.header("Team Performance in each World Cup")
@@ -581,7 +598,10 @@ try:
                 fig_list[year_list.index(selected_year)], use_container_width=True
             )
     with tab2:
-        data_list[year_list.index(selected_year)]
+        st.write(
+            data_list_i[year_list.index(selected_year)].to_html(),
+            unsafe_allow_html=True,
+        )
 except IndexError:
     st.error(
         "This plot/information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
