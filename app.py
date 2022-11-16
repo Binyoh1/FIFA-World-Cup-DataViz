@@ -70,11 +70,9 @@ year_list.extend(year_list2)
 
 # List of Total Goals Scored per World Cup_____________________________
 goals_list = [x["Goals For"].sum() for x in data_list]
-goals_dict = dict(zip(year_list, goals_list))
 
 # List of Number of Participating Teams per World Cup___________________
 teams_list = [x["Team"].count() for x in data_list]
-teams_dict = dict(zip(year_list, teams_list))
 
 # List of Number of Matches Played per World Cup________________________
 num_matches_list = list(df_ogs["MATCHES PLAYED"])
@@ -97,18 +95,14 @@ third_place_list = list(df_ogs["THIRD PLACE"])
 third_place_list.reverse()
 
 # Creating a new FIFA World Cup Summary Dataframe_______________________
-df_teams = pd.DataFrame(list(teams_dict.items()), columns=["Year", "Number of Teams"])
-df_goals = pd.DataFrame(
-    list(goals_dict.items()), columns=["Year", "Total Goals Scored"]
-)
-df_summary = (
-    df_teams.set_index(["Year"]).join(df_goals.set_index(["Year"]))
-).reset_index()
-df_summary["Host(s)"] = hosts_list
-df_summary["Champion"] = champions_list
-df_summary["Runner-Up"] = runner_ups_list
-df_summary["Third Place"] = third_place_list
-df_summary["Matches Played"] = num_matches_list
+df_summary = pd.DataFrame(year_list, columns=["Year"])
+df_summary["Host(s)"] = list(reversed(df_ogs["HOST"].to_list()))
+df_summary["Champion"] = list(reversed(df_ogs["CHAMPION"].to_list()))
+df_summary["Runner-Up"] = list(reversed(df_ogs["RUNNER UP"].to_list()))
+df_summary["Third Place"] = list(reversed(df_ogs["THIRD PLACE"].to_list()))
+df_summary["Number of Teams"] = teams_list
+df_summary["Matches Played"] = list(reversed(df_ogs["MATCHES PLAYED"].to_list()))
+df_summary["Total Goals Scored"] = goals_list
 df_summary["Avg Goals per Game"] = round(
     (df_summary["Total Goals Scored"] / df_summary["Matches Played"]), 2
 )
@@ -155,9 +149,11 @@ fig_champions = px.bar(
     color="Number of Titles",
     color_continuous_scale="Viridis",
     height=550,
+    text="Number of Titles",
 )
 fig_champions.update_xaxes(tickfont_size=14)
 fig_champions.update_yaxes(tickfont_size=16)
+fig_champions.update_traces(textposition="outside")
 
 # Plot of Total Goals Scored per World Cup________________________________
 df_summary_2 = df_summary.copy().sort_values("Number of Teams", ascending=False)
@@ -198,6 +194,7 @@ fig_agnt = px.bar(
     height=550,
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
+fig_agnt.update_traces(textposition="outside")
 
 ## App Layout------------------------------------------------------------
 # Page Header
@@ -227,7 +224,7 @@ tab1_text = "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 
 
 with tab1:
     options = st.selectbox(
-        "Choose how you want the data presented: Chart or Table", ("Table", "Chart")
+        "Choose how you want the data presented: Chart or Table", ("Chart", "Table")
     )
     col1, col2, col3 = st.columns([2, 4, 2])
     with col2:
