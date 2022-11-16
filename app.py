@@ -194,6 +194,7 @@ fig_agnt = px.bar(
     height=550,
 )
 fig_agnt.update_xaxes(type="category", categoryorder="category ascending")
+fig_agnt.update_yaxes(gridcolor="#848884")
 fig_agnt.update_traces(textposition="outside")
 
 ## App Layout------------------------------------------------------------
