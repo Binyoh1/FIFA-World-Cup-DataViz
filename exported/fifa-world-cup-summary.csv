@@ -1,22 +1,22 @@
-,Year,Host(s),Champion,Runner-Up,Third Place,Number of Teams,Matches Played,Total Goals Scored
-5,1998,Sweden,Brazil,Sweden,France,32,35,171
-1,2014,Italy,Italy,Czechoslovakia,Germany,32,17,171
-0,2018,Uruguay,Uruguay,Argentina,United States,32,16,169
-4,2002,Switzerland,West Germany,Hungary,Austria,32,26,161
-3,2006,Brazil,Uruguay,Brazil,Sweden,32,22,147
-9,1982,West Germany,West Germany,Netherlands,Poland,24,38,146
-2,2010,France,Italy,Hungary,Brazil,32,18,145
-6,1994,Chile,Brazil,Czechoslovakia,Chile,24,32,141
-16,1954,"South Korea, Japan",Brazil,Germany,Turkey,16,64,140
-8,1986,Mexico,Brazil,Italy,West Germany,24,32,132
-15,1958,France,France,Brazil,Croatia,16,64,126
-7,1990,England,England,West Germany,Portugal,24,32,115
-10,1978,Argentina,Argentina,Netherlands,Brazil,16,38,102
-11,1974,Spain,Italy,West Germany,Poland,16,52,97
-12,1970,Mexico,Argentina,West Germany,France,16,52,95
-13,1966,Italy,West Germany,Argentina,Italy,16,52,89
-14,1962,United States,Brazil,Italy,Sweden,16,52,89
-17,1950,Germany,Italy,France,Germany,13,64,88
-18,1938,South Africa,Spain,Netherlands,Germany,15,64,84
-20,1930,Russia,France,Croatia,Belgium,13,64,70
-19,1934,Brazil,Germany,Argentina,Netherlands,16,64,69
+,Year,Host(s),Champion,Runner-Up,Third Place,Number of Teams,Matches Played,Total Goals Scored,Avg Goals per Game
+5,1998,France,France,Brazil,Croatia,32,64,171,2.67
+1,2014,Brazil,Germany,Argentina,Netherlands,32,64,171,2.67
+0,2018,Russia,France,Croatia,Belgium,32,64,169,2.64
+4,2002,"South Korea, Japan",Brazil,Germany,Turkey,32,64,161,2.52
+3,2006,Germany,Italy,France,Germany,32,64,147,2.3
+9,1982,Spain,Italy,West Germany,Poland,24,52,146,2.81
+2,2010,South Africa,Spain,Netherlands,Germany,32,64,145,2.27
+6,1994,United States,Brazil,Italy,Sweden,24,52,141,2.71
+16,1954,Switzerland,West Germany,Hungary,Austria,16,26,140,5.38
+8,1986,Mexico,Argentina,West Germany,France,24,52,132,2.54
+15,1958,Sweden,Brazil,Sweden,France,16,35,126,3.6
+7,1990,Italy,West Germany,Argentina,Italy,24,52,115,2.21
+10,1978,Argentina,Argentina,Netherlands,Brazil,16,38,102,2.68
+11,1974,West Germany,West Germany,Netherlands,Poland,16,38,97,2.55
+12,1970,Mexico,Brazil,Italy,West Germany,16,32,95,2.97
+13,1966,England,England,West Germany,Portugal,16,32,89,2.78
+14,1962,Chile,Brazil,Czechoslovakia,Chile,16,32,89,2.78
+17,1950,Brazil,Uruguay,Brazil,Sweden,13,22,88,4.0
+18,1938,France,Italy,Hungary,Brazil,15,18,84,4.67
+20,1930,Uruguay,Uruguay,Argentina,United States,13,16,70,4.38
+19,1934,Italy,Italy,Czechoslovakia,Germany,16,17,69,4.06
