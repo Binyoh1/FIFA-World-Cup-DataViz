@@ -62,11 +62,7 @@ data_list = [
 ]
 
 # List of Years the World Cup Took Place______________________________
-year_list = [x for x in range(1950, 2019, 4)]
-year_list.sort(reverse=True)
-year_list2 = [y for y in range(1930, 1939, 4)]
-year_list2.sort(reverse=True)
-year_list.extend(year_list2)
+year_list = [y for y in range(2018, 1949, -4)] + [y for y in range(1938, 1929, -4)]
 
 # List of Total Goals Scored per World Cup_____________________________
 goals_list = [x["Goals For"].sum() for x in data_list]
@@ -291,293 +287,42 @@ with tab4:
 with tab5:
     st.write(df_summary_i.to_html(), unsafe_allow_html=True)
 
+
 ## World Cup Team Perfomances-----------------------------------------
-# WC 2018 Team performance_____________________________________________
-fig_2018 = px.bar(
-    df_2018,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 2018 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
+# Dynamically create and display team performance bar chart
+def create_fifa_bar_chart(year):
+    try:
+        fig = px.bar(
+            df.sort_index(ascending=False),
+            x=["Goals Conceded", "Goals Scored"],
+            y="Team",
+            title=f"{year} World Cup Team Perfomance - Goals Scored and Conceded",
+            barmode="group",
+            labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
+            width=652,
+            height=920,
+            color_discrete_map={"Goals Scored": "#0082d9", "Goals Conceded": "#c68555"},
+        )
+        fig.update_traces(hovertemplate="Team: %{y}<br>Goals: %{x}")
 
-# WC 2014 Team performance_____________________________________________
-fig_2014 = px.bar(
-    df_2014,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 2014 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
+        return fig
 
-# WC 2010 Team performance_____________________________________________
-fig_2010 = px.bar(
-    df_2010,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 2010 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
+    except:
+        print(
+            f"Data not found for {year}.\nPlease input a valid FIFA World Cup year up to 2018!"
+        )
 
-# WC 2006 Team performance_____________________________________________
-fig_2006 = px.bar(
-    df_2006,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 2006 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
 
-# WC 2002 Team performance_____________________________________________
-fig_2002 = px.bar(
-    df_2002,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 2002 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
+# Dynamically create and render dataframe for selected year
+def render_fifa_df(year):
+    try:
+        return df.to_html()
 
-# WC 1998 Team performance_____________________________________________
-fig_1998 = px.bar(
-    df_1998,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1998 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
+    except:
+        print(
+            f"Data not found for {year}.\nPlease input a valid FIFA World Cup year up to 2018!"
+        )
 
-# WC 1994 Team performance_____________________________________________
-fig_1994 = px.bar(
-    df_1994,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1994 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1990 Team performance_____________________________________________
-fig_1990 = px.bar(
-    df_1990,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1990 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1990 Team performance_____________________________________________
-fig_1990 = px.bar(
-    df_1990,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1990 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1986 Team performance_____________________________________________
-fig_1986 = px.bar(
-    df_1986,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1986 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1982 Team performance_____________________________________________
-fig_1982 = px.bar(
-    df_1982,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1982 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1982 Team performance_____________________________________________
-fig_1982 = px.bar(
-    df_1982,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1982 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1982 Team performance_____________________________________________
-fig_1982 = px.bar(
-    df_1982,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1982 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1978 Team performance_____________________________________________
-fig_1978 = px.bar(
-    df_1978,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1978 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1974 Team performance_____________________________________________
-fig_1974 = px.bar(
-    df_1974,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1974 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1970 Team performance_____________________________________________
-fig_1970 = px.bar(
-    df_1970,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1970 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1966 Team performance_____________________________________________
-fig_1966 = px.bar(
-    df_1966,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1966 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1962 Team performance_____________________________________________
-fig_1962 = px.bar(
-    df_1962,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1962 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1958 Team performance_____________________________________________
-fig_1958 = px.bar(
-    df_1958,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1958 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1958 Team performance_____________________________________________
-fig_1958 = px.bar(
-    df_1958,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1958 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1954 Team performance_____________________________________________
-fig_1954 = px.bar(
-    df_1954,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1954 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1950 Team performance_____________________________________________
-fig_1950 = px.bar(
-    df_1950,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1950 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1938 Team performance_____________________________________________
-fig_1938 = px.bar(
-    df_1938,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1938 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1934 Team performance_____________________________________________
-fig_1934 = px.bar(
-    df_1934,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1934 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# WC 1930 Team performance_____________________________________________
-fig_1930 = px.bar(
-    df_1930,
-    x="Team",
-    y=["Goals For", "Goals Against"],
-    title="Goals Scored & Conceded per Nation - 1930 World Cup",
-    barmode="group",
-    labels={"Team": "Team", "value": "Number of Goals", "variable": ""},
-)
-
-# List of Plots________________________________________________________
-fig_list = [
-    fig_2018,
-    fig_2014,
-    fig_2010,
-    fig_2006,
-    fig_2002,
-    fig_1998,
-    fig_1994,
-    fig_1990,
-    fig_1986,
-    fig_1982,
-    fig_1978,
-    fig_1974,
-    fig_1970,
-    fig_1966,
-    fig_1962,
-    fig_1958,
-    fig_1954,
-    fig_1950,
-    fig_1938,
-    fig_1934,
-    fig_1930,
-]
-
-# Update Layout of all Plotly Figures
-for fig in fig_list:
-    fig.update_layout(height=650)
-    fig.update_xaxes(tickangle=-85)
-    fig.update_yaxes(dtick=2)
-
-# Removing index column from dataframes in data_list
-data_list_i = [data.set_index("Position") for data in data_list]
-for data in data_list_i:
-    data.columns.name = data.index.name
-    data.index.name = None
 
 ## Team Performance per World Cup--------------------------------------
 # Header
@@ -588,16 +333,21 @@ selected_year = st.selectbox(
 )
 
 try:
+    df = pd.read_csv(
+        f"datasets/fifa-football-world-cup-dataset/FIFA - {selected_year}.csv",
+        index_col="Position",
+    ).rename(columns={"Goals For": "Goals Scored", "Goals Against": "Goals Conceded"})
+
     tab1, tab2 = st.tabs(["📈 Team Performace Chart", "🗃 Team Performance Data"])
     with tab1:
         col1, col2, col3 = st.columns([1, 14, 1])
         with col2:
             st.plotly_chart(
-                fig_list[year_list.index(selected_year)], use_container_width=True
+                create_fifa_bar_chart(selected_year), use_container_width=True
             )
     with tab2:
         st.write(
-            data_list_i[year_list.index(selected_year)].to_html(),
+            render_fifa_df(selected_year),
             unsafe_allow_html=True,
         )
 except IndexError:
