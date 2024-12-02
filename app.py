@@ -10,65 +10,23 @@ from streamlit import markdown as md
 st.set_page_config(layout="wide")
 
 ## Pandas Data Wrangling-------------------------------------------------
+# List of Years the World Cup Took Place______________________________
+year_list = [y for y in range(2018, 1949, -4)] + [y for y in range(1938, 1929, -4)]
+
 # Reading CSV Files into Pandas Dataframes_______________________________
 df_ogs = pd.read_csv(
     "./datasets/fifa-football-world-cup-dataset/FIFA - World Cup Summary.csv"
 )
-df_2018 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 2018.csv")
-df_2014 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 2014.csv")
-df_2010 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 2010.csv")
-df_2006 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 2006.csv")
-df_2002 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 2002.csv")
-df_1998 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1998.csv")
-df_1994 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1994.csv")
-df_1990 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1990.csv")
-df_1986 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1986.csv")
-df_1982 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1982.csv")
-df_1978 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1978.csv")
-df_1974 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1974.csv")
-df_1970 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1970.csv")
-df_1966 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1966.csv")
-df_1962 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1962.csv")
-df_1958 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1958.csv")
-df_1954 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1954.csv")
-df_1950 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1950.csv")
-df_1938 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1938.csv")
-df_1934 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1934.csv")
-df_1930 = pd.read_csv("./datasets/fifa-football-world-cup-dataset/FIFA - 1930.csv")
-
-# List of Dataframes_____________________________________________________
-data_list = [
-    df_2018,
-    df_2014,
-    df_2010,
-    df_2006,
-    df_2002,
-    df_1998,
-    df_1994,
-    df_1990,
-    df_1986,
-    df_1982,
-    df_1978,
-    df_1974,
-    df_1970,
-    df_1966,
-    df_1962,
-    df_1958,
-    df_1954,
-    df_1950,
-    df_1938,
-    df_1934,
-    df_1930,
+df_list = [
+    pd.read_csv(f"./datasets/fifa-football-world-cup-dataset/FIFA - {year}.csv")
+    for year in year_list
 ]
 
-# List of Years the World Cup Took Place______________________________
-year_list = [y for y in range(2018, 1949, -4)] + [y for y in range(1938, 1929, -4)]
-
 # List of Total Goals Scored per World Cup_____________________________
-goals_list = [x["Goals For"].sum() for x in data_list]
+goals_list = [x["Goals For"].sum() for x in df_list]
 
 # List of Number of Participating Teams per World Cup___________________
-teams_list = [x["Team"].count() for x in data_list]
+teams_list = [x["Team"].count() for x in df_list]
 
 # List of Number of Matches Played per World Cup________________________
 num_matches_list = list(df_ogs["MATCHES PLAYED"])
@@ -217,7 +175,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 df_champions_i = df_champions.set_index("Team")
 df_champions_i.columns.name = df_champions_i.index.name
 df_champions_i.index.name = None
-tab1_text = "- __\*__ 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)."
+tab1_text = "- &#42; 3 titles won as **West Germany** (1954, 1974, 1990) and 1 as unified Germany (2014)."
 
 with tab1:
     options = st.selectbox(
@@ -252,7 +210,7 @@ with tab2:
     with col2:
         md(
             """
-           - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions which had 16 participating teams (**1934, 1954-1978**).
+           - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions that had 16 participating teams (**1934, 1954-1978**).
            - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was nonetheless one embroiled in drama.
            - The **2006** edition and especially the **2010** World Cup had numerous complaints about the behaviour of the matchball used in the tournament, which may partially explain why fewer goals were scored compared to other editions with 32 participants (**1998-present**).
            """
@@ -303,7 +261,14 @@ def create_fifa_bar_chart(year):
             height=920,
             color_discrete_map={"Goals Scored": "#0082d9", "Goals Conceded": "#c68555"},
         )
+
         fig.update_traces(hovertemplate="Team: %{y}<br>Goals: %{x}")
+
+        fig.update_layout(
+            legend=dict(
+                orientation="h", yanchor="bottom", y=1.01, xanchor="right", x=0.5
+            )
+        )
 
         return fig
 
@@ -329,7 +294,7 @@ def render_fifa_df(year):
 st.header("Team Performance in each World Cup")
 # Section Layout
 selected_year = st.selectbox(
-    "Choose the World Cup Edition you wish to display", (year_list)
+    "Choose the World Cup edition you wish to display", (year_list)
 )
 
 try:
@@ -352,7 +317,7 @@ try:
         )
 except IndexError:
     st.error(
-        "This plot/information is currently not available. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
+        "This plot/information is currently unavailable. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
     )
 
 # Footer
