@@ -17,16 +17,27 @@ year_list = [y for y in range(2018, 1949, -4)] + [y for y in range(1938, 1929, -
 df_ogs = pd.read_csv(
     "./datasets/fifa-football-world-cup-dataset/FIFA - World Cup Summary.csv"
 )
-df_list = [
-    pd.read_csv(f"./datasets/fifa-football-world-cup-dataset/FIFA - {year}.csv")
-    for year in year_list
-]
+
+# concatenated dataframe containing all data
+fifa_wc_data = pd.concat(
+    [
+        pd.read_csv(
+            f"./datasets/fifa-football-world-cup-dataset/FIFA - {year}.csv"
+        ).assign(Year=year)
+        for year in year_list
+    ]
+)
+
+fifa_wc_data.rename(
+    columns={"Goals For": "Goals Scored", "Goals Against": "Goals Conceded"},
+    inplace=True,
+)
 
 # List of Total Goals Scored per World Cup_____________________________
-goals_list = [x["Goals For"].sum() for x in df_list]
+goals_per_wc = fifa_wc_data.groupby("Year")["Goals Scored"].sum()
 
 # List of Number of Participating Teams per World Cup___________________
-teams_list = [x["Team"].count() for x in df_list]
+num_teams_per_wc = fifa_wc_data.groupby("Year")["Team"].count()
 
 # List of Number of Matches Played per World Cup________________________
 num_matches_list = list(df_ogs["MATCHES PLAYED"])
@@ -54,9 +65,9 @@ df_summary["Host(s)"] = list(reversed(df_ogs["HOST"].to_list()))
 df_summary["Champion"] = list(reversed(df_ogs["CHAMPION"].to_list()))
 df_summary["Runner-Up"] = list(reversed(df_ogs["RUNNER UP"].to_list()))
 df_summary["Third Place"] = list(reversed(df_ogs["THIRD PLACE"].to_list()))
-df_summary["Number of Teams"] = teams_list
+df_summary["Number of Teams"] = num_teams_per_wc
 df_summary["Matches Played"] = list(reversed(df_ogs["MATCHES PLAYED"].to_list()))
-df_summary["Total Goals Scored"] = goals_list
+df_summary["Total Goals Scored"] = goals_per_wc
 df_summary["Avg Goals per Game"] = round(
     (df_summary["Total Goals Scored"] / df_summary["Matches Played"]), 2
 )
@@ -250,8 +261,9 @@ with tab5:
 # Dynamically create and display team performance bar chart
 def create_fifa_bar_chart(year):
     try:
+        year_data = fifa_wc_data[fifa_wc_data["Year"] == year]
         fig = px.bar(
-            df.sort_index(ascending=False),
+            year_data.sort_index(ascending=False),
             x=["Goals Conceded", "Goals Scored"],
             y="Team",
             title=f"{year} World Cup Team Perfomance - Goals Scored and Conceded",
@@ -281,7 +293,7 @@ def create_fifa_bar_chart(year):
 # Dynamically create and render dataframe for selected year
 def render_fifa_df(year):
     try:
-        return df.to_html()
+        return fifa_wc_data[fifa_wc_data["Year"] == year].to_html()
 
     except:
         print(
@@ -298,11 +310,6 @@ selected_year = st.selectbox(
 )
 
 try:
-    df = pd.read_csv(
-        f"datasets/fifa-football-world-cup-dataset/FIFA - {selected_year}.csv",
-        index_col="Position",
-    ).rename(columns={"Goals For": "Goals Scored", "Goals Against": "Goals Conceded"})
-
     tab1, tab2 = st.tabs(["📈 Team Performace Chart", "🗃 Team Performance Data"])
     with tab1:
         col1, col2, col3 = st.columns([1, 14, 1])
@@ -315,7 +322,7 @@ try:
             render_fifa_df(selected_year),
             unsafe_allow_html=True,
         )
-except IndexError:
+except:
     st.error(
         "This plot/information is currently unavailable. Please, contact [@Binyoh](https://github.com/Binyoh1) to have it resolved"
     )
