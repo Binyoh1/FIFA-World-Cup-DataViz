@@ -7,7 +7,9 @@ import streamlit as st
 from streamlit import markdown as md
 
 ## Defaulting Streamlit App to Wide Mode---------------------------------
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="The FIFA Men's World Cup - Team Performance", layout="wide"
+)
 
 ## Pandas Data Wrangling-------------------------------------------------
 # List of Years the World Cup Took Place______________________________
