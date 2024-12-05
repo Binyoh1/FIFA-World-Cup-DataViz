@@ -33,11 +33,6 @@ fifa_wc_data.rename(
     inplace=True,
 )
 
-df_list = [
-    pd.read_csv(f"./datasets/fifa-football-world-cup-dataset/FIFA - {year}.csv")
-    for year in year_list
-]
-
 # List of Total Goals Scored per World Cup_____________________________
 goals_per_wc = (
     fifa_wc_data.groupby("Year")["Goals Scored"].sum().sort_index(ascending=False)
