@@ -13,7 +13,7 @@ st.set_page_config(
 
 ## Pandas Data Wrangling-------------------------------------------------
 # List of Years the World Cup Took Place______________________________
-year_list = [y for y in range(2018, 1949, -4)] + [y for y in range(1938, 1929, -4)]
+year_list = [y for y in range(2022, 1949, -4)] + [y for y in range(1938, 1929, -4)]
 
 # Reading CSV Files into Pandas Dataframes_______________________________
 df_ogs = pd.read_csv(
@@ -112,19 +112,27 @@ df_agnt.sort_values("Number of Teams", ascending=False, inplace=True)
 
 ## Creating Plots/Charts--------------------------------------------------
 # Plot of World Cup winners in the history of the competition______________
-# df_champions["Number of Titles"] = df_champions["Number of Titles"].astype(str)
+df_champions["Number of Titles"] = df_champions["Number of Titles"].astype(str)
 fig_champions = px.bar(
     df_champions,
     x="Team",
     y="Number of Titles",
-    color="Number of Titles",
-    color_continuous_scale="Viridis",
     height=550,
     text="Number of Titles",
 )
 fig_champions.update_xaxes(tickfont_size=14)
 fig_champions.update_yaxes(tickfont_size=16)
-fig_champions.update_traces(textposition="outside")
+fig_champions.update_layout(yaxis=dict(visible=False, showticklabels=False))
+fig_champions.update_traces(
+    textposition="outside",
+    textfont=dict(size=16),
+    marker=dict(
+        color=[
+            "#0082d9" if i == df_champions["Number of Titles"].idxmax() else "#7ccbfd"
+            for i in df_champions.index
+        ]
+    ),
+)
 
 # Plot of Total Goals Scored per World Cup________________________________
 df_summary_2 = df_summary.copy().sort_values("Number of Teams", ascending=False)
@@ -143,7 +151,7 @@ fig_tg.update_xaxes(type="category", categoryorder="category ascending", tickang
 # Plot of Average Goals Scored per World Cup Game_______________________
 df_summary_2["Year"] = df_summary_2["Year"].astype(str)
 fig_ag = px.line(
-    df_summary,
+    df_summary.sort_values("Year", ascending=True),
     x="Year",
     y="Avg Goals per Game",
     title="Average Number of Goals Scored per Game in each World Cup",
@@ -231,7 +239,7 @@ with tab2:
         md(
             """
            - The **1954** and **1958** World Cup editions had many more goals scored compared to other editions that had 16 participating teams (**1934, 1954-1978**).
-           - The **1990** World Cup oddly had much fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was nonetheless one embroiled in drama.
+           - The **1990** World Cup oddly had significantly fewer goals scored compared to other editions of the tournament with 24 participants (**1982-1994**), but was nonetheless one embroiled in drama.
            - The **2006** edition and especially the **2010** World Cup had numerous complaints about the behaviour of the matchball used in the tournament, which may partially explain why fewer goals were scored compared to other editions with 32 participants (**1998-present**).
            """
         )
@@ -243,11 +251,11 @@ with tab3:
     with col2:
         md(
             """
-- The earliest World Cup Editions (**1930-1958**) in general had higher average goals per game (**over 3.5**), while subsequent editions had comparably lower numbers (**under 3.0**).
+- The earliest World Cup Editions (**1930-1958**) in general had on average higher number of goals scored per game (**over 3.5**), while subsequent editions had comparably lower numbers (**under 3**).
 
-- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), it had the second fewest matches played (**26**).
-    - Hence the highest average goals scored per game (**5.38**) in World Cup history.
-- The **1990** World Cup in contrast, has the lowest average goals scored per game (**2.21**) in the tournament's history.
+- Interestingly, the **1954** World Cup while having the most goals scored (**140**) amongst all the editions in which 16 teams participated (**1934, 1954-1978**), had the second fewest matches played (**26**).
+    - Hence the highest average goals scored per game (**5.4**) in World Cup history.
+- The **1990** World Cup in contrast, has the lowest average goals scored per game (**2.2**) in the tournament's history.
     """
         )
 # Plot of Average Number of Goals per Number of World Cup Participants_
@@ -295,7 +303,7 @@ def create_fifa_bar_chart(year):
 
     except:
         print(
-            f"Data not found for {year}.\nPlease input a valid FIFA World Cup year up to 2018!"
+            f"Data not found for {year}.\nPlease input a valid FIFA World Cup year up to {max(year_list)}!"
         )
 
 
