@@ -9,8 +9,8 @@ This project aims to gain the following insights:
 - Build a dataset with World Cup host, winner and top scoring team for each edition of the World Cup (1930-2022)
 - How often does the top scoring team win the World Cup.
 - How often does the host nation win the World Cup.
-- Visualize data of total goals scored in every edition of the World Cup from 1930-2018 indicating the number of participating teams in each edition of the tournament.
-- Visualize data of total goals scored and conceded by each nation in every edition of the World Cup since inception in 1930 to 2018.
+- Visualize data of total goals scored in every edition of the World Cup from 1930-2022 indicating the number of participating teams in each edition of the tournament.
+- Visualize data of total goals scored and conceded by each nation in every edition of the World Cup since inception in 1930 to 2022.
 - Observe any noticeable trends and deviations from said trends across World Cup editions.
   - For any observable deviations, what were some interesting stories surrounding those particular World Cup editions.
 - Finally, creating a web app that displays some interesting insights into the FIFA World Cup over the years
